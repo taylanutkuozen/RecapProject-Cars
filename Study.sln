@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{550815DF-BD44-441A-ABFB-583256A58555}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entities.csproj", "{550815DF-BD44-441A-ABFB-583256A58555}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{45769276-7EC8-432B-BA8D-7633BD3C5A11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{45769276-7EC8-432B-BA8D-7633BD3C5A11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogicLayer", "BusinessLogicLayer\BusinessLogicLayer.csproj", "{34842BEC-D526-4C85-B493-577A108F69BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLogicLayer", "BusinessLogicLayer\BusinessLogicLayer.csproj", "{34842BEC-D526-4C85-B493-577A108F69BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTest", "ConsoleTest\ConsoleTest.csproj", "{1CB04E62-941B-4C29-90E5-D7ED20BA0E38}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsole", "TestConsole\TestConsole.csproj", "{BF5D453B-B1FE-4CBA-874E-73E8E0DC9DD3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{34842BEC-D526-4C85-B493-577A108F69BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34842BEC-D526-4C85-B493-577A108F69BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34842BEC-D526-4C85-B493-577A108F69BB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1CB04E62-941B-4C29-90E5-D7ED20BA0E38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1CB04E62-941B-4C29-90E5-D7ED20BA0E38}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1CB04E62-941B-4C29-90E5-D7ED20BA0E38}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1CB04E62-941B-4C29-90E5-D7ED20BA0E38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF5D453B-B1FE-4CBA-874E-73E8E0DC9DD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF5D453B-B1FE-4CBA-874E-73E8E0DC9DD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF5D453B-B1FE-4CBA-874E-73E8E0DC9DD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF5D453B-B1FE-4CBA-874E-73E8E0DC9DD3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
