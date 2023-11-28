@@ -1,4 +1,5 @@
-﻿using DataAccessLayer.Abstract;
+﻿using Core.DataAccess.EntityFramework;
+using DataAccessLayer.Abstract;
 using Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 namespace DataAccessLayer.Concrete.EntityFramework
 {
-    public class EfBrandDal : IBrandDal
+    public class EfBrandDal : EfEntityRepositoryBase<Brand,RecapProjectDbContext>,IBrandDal
     {
         public void Add(Brand entity)
         {

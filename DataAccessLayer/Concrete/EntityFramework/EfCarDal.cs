@@ -1,5 +1,7 @@
-﻿using DataAccessLayer.Abstract;
+﻿using Core.DataAccess.EntityFramework;
+using DataAccessLayer.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 namespace DataAccessLayer.Concrete.EntityFramework
 {
-    public class EfCarDal : ICarDal
+    public class EfCarDal : EfEntityRepositoryBase<Car,RecapProjectDbContext>, ICarDal
     {
         public void Add(Car entity)
         {
@@ -41,6 +43,19 @@ namespace DataAccessLayer.Concrete.EntityFramework
             using (RecapProjectDbContext context=new())
             {
                 return filter == null ? context.Set<Car>().ToList() : context.Set<Car>().Where(filter).ToList();
+            }
+        }
+        public List<CarDetailDto> GetCarDetails()
+        {
+            using (RecapProjectDbContext context=new())
+            {
+                var result = from c in context.Cars
+                             join b in context.Brands
+                             on c.BrandId equals b.BrandId
+                             join co in context.Colours
+                             on c.ColorId equals co.ColourId
+                             select new CarDetailDto { CarName = c.CarName, BrandName = b.BrandName, ColourName = co.ColourName, DailyPrice = c.DailyPrice };
+                return result.ToList();             
             }
         }
         public void Update(Car entity)

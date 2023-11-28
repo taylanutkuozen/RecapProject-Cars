@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-namespace Entities.Concrete
+namespace Entities.DTOs
 {
-    public class Colour :IEntity
+    public class CarDetailDto : IDto
     {
-        public int ColourId { get; set; }
+        public string CarName {  get; set; }
+        public string BrandName { get; set; }
         public string ColourName { get; set; }
+        public decimal DailyPrice { get; set; }
     }
 }
