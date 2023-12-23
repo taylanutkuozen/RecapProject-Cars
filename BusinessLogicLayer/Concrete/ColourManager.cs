@@ -1,4 +1,6 @@
 ﻿using BusinessLogicLayer.Abstract;
+using BusinessLogicLayer.Constants;
+using Core.Utilities.Results;
 using DataAccessLayer.Abstract;
 using Entities.Concrete;
 using System;
@@ -15,25 +17,28 @@ namespace BusinessLogicLayer.Concrete
         {
             _colourDal = colourDal;
         }
-        public void Add(Colour colour)
+        public IResult Add(Colour colour)
         {
             _colourDal.Add(colour);
+            return new SuccessResult(Messages.ColourAdded);
         }
-        public void Delete(Colour colour)
+        public IResult Delete(Colour colour)
         {
             _colourDal.Delete(colour);
+            return new SuccessResult(Messages.ColourDeleted);
         }
-        public List<Colour> GetAllByColourId(int id)
+        public IDataResult<List<Colour>> GetAllByColourId(int id)
         {
-            return _colourDal.GetAll(c=>c.ColourId == id);
+            return new SuccessDataResult<List<Colour>>(_colourDal.GetAll(c=>c.ColourId == id));
         }
-        public List<Colour> GetAllColour()
+        public IDataResult<List<Colour>> GetAllColour()
         {
-            return _colourDal.GetAll();
+            return new SuccessDataResult<List<Colour>>(_colourDal.GetAll());
         }
-        public void Update(Colour colour)
+        public IResult Update(Colour colour)
         {
-            _colourDal.Update(colour);
+           _colourDal.Update(colour);
+            return new SuccessResult(Messages.ColourUpdated);
         }
     }
 }

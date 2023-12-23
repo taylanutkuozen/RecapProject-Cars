@@ -1,7 +1,10 @@
 ﻿using BusinessLogicLayer.Abstract;
+using BusinessLogicLayer.Constants;
+using Core.Utilities.Results;
 using DataAccessLayer.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
+using Core.Utilities.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,34 +20,39 @@ namespace BusinessLogicLayer.Concrete
             _cardal = carDal;
         }
 
-        public void Add(Car car)
+        public IResult Add(Car car)
         {
             if(car.CarName.Length>2 && car.DailyPrice>0)
-                _cardal.Add(car);
+            {
+                return new ErrorResult(Messages.CarNameInValid);
+            }
+            return new SuccessResult(Messages.CarAdded);
         }
-        public void Delete(Car car)
+        public IResult Delete(Car car)
         {
             _cardal.Delete(car);
+            return new SuccessResult(Messages.ProductDeleted);
         }
-        public Car GetAllByBrandId(int id)
+        public IDataResult<Car> GetAllByBrandId(int id)
         {
-            return _cardal.Get(c => c.CarId == id);
+            return new SuccessDataResult<Car>(_cardal.Get(c => c.CarId == id),Messages.CarListedByBrand);
         }
-        public List<Car> GetAllCars()
+        public IDataResult<List<Car>> GetAllCars()
         {
-            return _cardal.GetAll();
+            return new SuccessDataResult<List<Car>>(_cardal.GetAll(),Messages.CarListed);
         }
-        public List<Car> GetByDailyPrice(decimal min, decimal max)
+        public IDataResult<List<Car>> GetByDailyPrice(decimal min, decimal max)
         {
-            return _cardal.GetAll(c => c.DailyPrice >= min && c.DailyPrice <= max);
+            return new SuccessDataResult<List<Car>>(_cardal.GetAll(c => c.DailyPrice >= min && c.DailyPrice <= max));
         }
-        public List<CarDetailDto> GetCarDetails()
+        public IDataResult<List<CarDetailDto>> GetCarDetails()
         {
-          return  _cardal.GetCarDetails();
+          return new SuccessDataResult<List<CarDetailDto>>(_cardal.GetCarDetails());
         }
-        public void Update(Car car)
+        public IResult Update(Car car)
         {
             _cardal.Update(car);
+            return new SuccessResult(Messages.CarUpdated);
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using BusinessLogicLayer.Abstract;
+using BusinessLogicLayer.Constants;
+using Core.Utilities.Results;
 using DataAccessLayer.Abstract;
 using Entities.Concrete;
 using System;
@@ -15,25 +17,28 @@ namespace BusinessLogicLayer.Concrete
         {
             _brandDal = brandDal;
         }
-        public void Add(Brand brand)
+        public IResult Add(Brand brand)
         {
             _brandDal.Add(brand);
+            return new SuccessResult(Messages.AddBrand);
         }
-        public List<Brand> GetAllByBrandId(int id)
+        public IDataResult<List<Brand>> GetAllByBrandId(int id)
         {
-            return _brandDal.GetAll(b => b.BrandId == id);
+            return new SuccessDataResult<List<Brand>>(_brandDal.GetAll(b => b.BrandId == id));
         }
-        public List<Brand> GetAllBrand()
+        public IDataResult<List<Brand>> GetAllBrand()
         {
-            return _brandDal.GetAll();
+            return new SuccessDataResult<List<Brand>>(_brandDal.GetAll());
         }
-        public void Update(Brand brand)
+        public IResult Update(Brand brand)
         {
             _brandDal.Update(brand);
+            return new SuccessResult(Messages.BrandUpdated);
         }
-        public void Delete(Brand brand)
+        public IResult Delete(Brand brand)
         {
             _brandDal.Delete(brand);
+            return new SuccessResult(Messages.BrandDeleted);
         }
     }
 }
